@@ -1,0 +1,52 @@
+---
+// This fence is the "component script" — runs at build time only.
+// `Props` defines what data this Layout accepts from any page that uses it.
+// Compare it to a Lightroom preset's input sliders: title/description are
+// the "sliders" each page can set when it imports this Layout.
+interface Props {
+	title: string;
+	description?: string;
+	ogImage?: string;
+}
+
+const { title, description = 'amapalinc.com', ogImage } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+
+		<title>{title}</title>
+		<meta name="description" content={description} />
+
+		<!-- Open Graph tags, same role as the Adobe Portfolio meta-og:* fields -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		{ogImage && <meta property="og:image" content={ogImage} />}
+		<meta name="twitter:card" content="summary_large_image" />
+	</head>
+	<body>
+		<slot />
+		<!-- <slot /> is where each page's own HTML gets injected.
+		     Think of Layout as the matte/frame, <slot /> as where the print goes. -->
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+		color: #1a1a1a;
+		background: #ffffff;
+	}
+	body {
+		margin: 0;
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+</style>
