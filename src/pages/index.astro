@@ -4,25 +4,28 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="amapalinc.com" description="work in progress">
+<BaseLayout title="Amapal Inc." description="work in progress">
 	<main>
-		<h1>amapalinc.com</h1>
+		<img class="logo" src="/images/logo.png" alt="Amapal Inc. Dairy Consultants" />
 		<p>work in progress</p>
 	</main>
 </BaseLayout>
 
 <style>
 	main {
+		display: flex;
+		align-items: center;
+		gap: 2rem;
 		padding: 2rem;
 	}
-	h1 {
-		font-size: 1.1rem;
-		font-weight: 400;
-		letter-spacing: 0.02em;
-		margin-bottom: 0.5rem;
+	.logo {
+		height: 100px;
+		width: auto;
+		display: block;
 	}
 	p {
 		color: #666;
 		font-size: 0.95rem;
+		margin: 0;
 	}
 </style>
